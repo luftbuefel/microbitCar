@@ -1,0 +1,49 @@
+input.onButtonPressed(Button.A, () => {
+    radio.sendString("forward")
+    basic.showLeds(`
+        . . # . .
+        . # # # .
+        # . # . #
+        . . # . .
+        . . # . .
+        `)
+})
+input.onPinPressed(TouchPin.P0, () => {
+    radio.sendString("right")
+    basic.showLeds(`
+        . . # . .
+        . . . # .
+        # # # # #
+        . . . # .
+        . . # . .
+        `)
+})
+input.onPinPressed(TouchPin.P2, () => {
+    radio.sendString("left")
+    basic.showLeds(`
+        . . # . .
+        . # . . .
+        # # # # #
+        . # . . .
+        . . # . .
+        `)
+})
+input.onButtonPressed(Button.B, () => {
+    radio.sendString("back")
+    basic.showLeds(`
+        . . # . .
+        . . # . .
+        # . # . #
+        . # # # .
+        . . # . .
+        `)
+})
+radio.setGroup(1)
+radio.sendString("stop")
+basic.showLeds(`
+    . # # # .
+    # # # # #
+    # # # # #
+    # # # # #
+    . # # # .
+    `)
