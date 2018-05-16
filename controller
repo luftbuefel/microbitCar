@@ -8,7 +8,8 @@ input.onButtonPressed(Button.A, () => {
         . . # . .
         `)
 })
-input.onPinPressed(TouchPin.P0, () => {
+
+function right() {
     radio.sendString("right")
     basic.showLeds(`
         . . # . .
@@ -17,8 +18,8 @@ input.onPinPressed(TouchPin.P0, () => {
         . . . # .
         . . # . .
         `)
-})
-input.onPinPressed(TouchPin.P2, () => {
+}
+function left() {
     radio.sendString("left")
     basic.showLeds(`
         . . # . .
@@ -27,7 +28,7 @@ input.onPinPressed(TouchPin.P2, () => {
         . # . . .
         . . # . .
         `)
-})
+}
 input.onButtonPressed(Button.B, () => {
     radio.sendString("back")
     basic.showLeds(`
@@ -47,3 +48,12 @@ basic.showLeds(`
     # # # # #
     . # # # .
     `)
+
+basic.forever(() => {
+    if (input.acceleration(Dimension.X) > 750) {
+        right()
+    }
+    if (input.acceleration(Dimension.X) < -750) {
+        left()
+    }
+})
