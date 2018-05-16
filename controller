@@ -1,4 +1,4 @@
-input.onButtonPressed(Button.A, () => {
+function forward()  {
     radio.sendString("forward")
     basic.showLeds(`
         . . # . .
@@ -7,9 +7,18 @@ input.onButtonPressed(Button.A, () => {
         . . # . .
         . . # . .
         `)
-})
-
-function right() {
+}
+function backward()  {
+    radio.sendString("back")
+    basic.showLeds(`
+        . . # . .
+        . . # . .
+        # . # . #
+        . # # # .
+        . . # . .
+        `)
+}
+function right()  {
     radio.sendString("right")
     basic.showLeds(`
         . . # . .
@@ -19,7 +28,7 @@ function right() {
         . . # . .
         `)
 }
-function left() {
+function left()  {
     radio.sendString("left")
     basic.showLeds(`
         . . # . .
@@ -29,15 +38,18 @@ function left() {
         . . # . .
         `)
 }
-input.onButtonPressed(Button.B, () => {
-    radio.sendString("back")
+function stop()  {
+    radio.sendString("stop")
     basic.showLeds(`
-        . . # . .
-        . . # . .
-        # . # . #
         . # # # .
-        . . # . .
+        . # . . .
+        . # # # .
+        . . . # .
+        . # # # .
         `)
+}
+input.onButtonPressed(Button.A, () => {
+    stop()
 })
 radio.setGroup(1)
 radio.sendString("stop")
@@ -48,12 +60,17 @@ basic.showLeds(`
     # # # # #
     . # # # .
     `)
-
 basic.forever(() => {
     if (input.acceleration(Dimension.X) > 750) {
         right()
     }
     if (input.acceleration(Dimension.X) < -750) {
         left()
+    }
+    if (input.acceleration(Dimension.Y) > 750) {
+        backward()
+    }
+    if (input.acceleration(Dimension.Y) < -750) {
+        forward()
     }
 })
