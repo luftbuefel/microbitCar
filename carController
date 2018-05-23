@@ -12,12 +12,12 @@ function forward()  {
     pins.digitalWritePin(DigitalPin.P13, 1)
     pins.digitalWritePin(DigitalPin.P12, 0)
     pins.analogWritePin(AnalogPin.P2, speed)
-    pins.digitalWritePin(DigitalPin.P15, 0)
+    pins.digitalWritePin(DigitalPin.P15, 1)
     pins.digitalWritePin(DigitalPin.P16, 0)
 }
 function left()  {
     pins.analogWritePin(AnalogPin.P1, speed)
-    pins.digitalWritePin(DigitalPin.P13, 1)
+    pins.digitalWritePin(DigitalPin.P13, 0)
     pins.digitalWritePin(DigitalPin.P12, 0)
     pins.analogWritePin(AnalogPin.P2, speed)
     pins.digitalWritePin(DigitalPin.P15, 1)
@@ -41,10 +41,10 @@ function back()  {
 }
 function right()  {
     pins.analogWritePin(AnalogPin.P1, speed)
-    pins.digitalWritePin(DigitalPin.P13, 0)
+    pins.digitalWritePin(DigitalPin.P13, 1)
     pins.digitalWritePin(DigitalPin.P12, 0)
     pins.analogWritePin(AnalogPin.P2, speed)
-    pins.digitalWritePin(DigitalPin.P15, 1)
+    pins.digitalWritePin(DigitalPin.P15, 0)
     pins.digitalWritePin(DigitalPin.P16, 0)
 }
 radio.onDataPacketReceived( ({ receivedString }) =>  {
